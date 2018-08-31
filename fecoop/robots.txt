@@ -1,0 +1,15 @@
+User-agent: *
+Disallow:/admin/
+Disallow:/fonts/
+Disallow:/icons/
+Disallow:/img/
+Disallow:/js/
+Disallow:display.php
+Disallow:busqueda.php
+Disallow:sent.php
+Disallow:verasociado.php
+Disallow:error.php
+
+ 
+
+sitemap:https://www.fecoopteba.coop/sitemap.xml

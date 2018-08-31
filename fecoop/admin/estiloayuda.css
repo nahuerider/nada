@@ -1,0 +1,96 @@
+/* Popup container - can be anything you want */
+		.popup {
+			position: relative;
+			background-image: url(icons/deayuda.svg);
+			display: inline-block;
+			cursor: pointer;
+			padding: 16px;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			background-repeat: no-repeat;
+			background-origin: content-box;
+			user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			background-position: center;
+			background-size: 30px 30px;
+			z-index: 999;
+		}
+		.popup:hover{
+			background-image: url(icons/deayudanegro.svg);
+		}
+
+		/* The actual popup */
+		.popup .popuptext {
+			visibility: hidden;
+			width: 160px;
+			background-color: #555;
+			color: #fff;
+			text-align: center;
+			border-radius: 6px;
+			padding: 8px 0;
+			position: absolute;
+			z-index: 1;
+			bottom: 125%;
+			left: 50%;
+			margin-left: -80px;
+		}
+
+		/* Popup arrow */
+		.popup .popuptext::after {
+			content: "";
+			position: absolute;
+			top: 100%;
+			left: 50%;
+			margin-left: -5px;
+			border-width: 5px;
+			border-style: solid;
+			border-color: #555 transparent transparent transparent;
+		}
+
+		/* Toggle this class - hide and show the popup */
+		.popup .show {
+			visibility: visible;
+			-webkit-animation: fadeIn 1s;
+			animation: fadeIn 1s;
+		}
+
+		/* Add animation (fade in the popup) */
+		@-webkit-keyframes fadeIn {
+			from {opacity: 0;} 
+			to {opacity: 1;}
+		}
+
+		@keyframes fadeIn {
+			from {opacity: 0;}
+			to {opacity:1 ;}
+		}
+		.lugares{
+			float:right;
+			margin-right:70px;
+			margin-top:30px;
+		}
+		body{
+			overflow-x:hidden;
+		}
+		.quickbar{
+			
+			width:100%;
+			height:60px;
+			margin:20px auto;
+			display:block;
+		}
+		.quickbar2{
+			float:right;
+			width:20%;
+			height:50px;
+			background-color:#034D82;
+			color:white;
+			
+		}
+		#quickmas{
+			color:white;
+		}
+		
+		

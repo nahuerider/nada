@@ -1,0 +1,119 @@
+echo "<ul class='list-group col-sm-4'>
+        <li data-target='#myCarousel' data-slide-to='0' class='list-group-item active'><h4>Lorem ipsum dolor sit amet consetetur sadipscing</h4></li>
+        <li data-target='#myCarousel' data-slide-to='1' class='list-group-item'><h4>consetetur sadipscing elitr, sed diam nonumy eirmod</h4></li>
+        <li data-target='#myCarousel' data-slide-to='2' class='list-group-item'><h4>tempor invidunt ut labore et dolore</h4></li>
+        <li data-target='#myCarousel' data-slide-to='3' class='list-group-item'><h4>magna aliquyam erat, sed diam voluptua</h4></li>
+        <li data-target='#myCarousel' data-slide-to='4' class='list-group-item'><h4>tempor invidunt ut labore et dolore magna aliquyam erat</h4></li>
+        </ul>
+
+        <!-- Controls -->
+        <div class='carousel-controls'>
+            <a class='left carousel-control' href='#myCarousel' data-slide='prev'>
+                <span class='glyphicon glyphicon-chevron-left'></span>
+            </a>
+            <a class='right carousel-control' href='#myCarousel' data-slide='next'>
+                <span class='glyphicon glyphicon-chevron-right'></span>
+            </a>
+        </div>"
+
+
+        .slides{
+					width:75%;
+					height:70%;
+					margin-left: 15%;
+				}
+        .slides img{
+					width:65%;
+					height:100%;
+					
+				}        
+
+                <!--First slide-->
+				<div class="carousel-item active">
+					<div class="row">
+					<div class="col-md-4">
+						<div class="card mb-2">
+							<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg" alt="Card image cap">
+							<div class="card-body">
+								<h4 class="card-title">Card title</h4>
+								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+								<a class="btn btn-primary">Button</a>
+							</div>
+						</div>
+					</div>
+		
+					<div class="col-md-4 clearfix d-none d-md-block">
+						<div class="card mb-2">
+							<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg" alt="Card image cap">
+							<div class="card-body">
+								<h4 class="card-title">Card title</h4>
+								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+								<a class="btn btn-primary">Button</a>
+							</div>
+						</div>
+					</div>
+		
+					<div class="col-md-4 clearfix d-none d-md-block">
+						<div class="card mb-2">
+							<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg" alt="Card image cap">
+							<div class="card-body">
+								<h4 class="card-title">Card title</h4>
+								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+								<a class="btn btn-primary">Button</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>
+                <!--/.First slide-->
+                
+
+    <?php
+    $queryfija="SELECT content FROM publicaciones UNION SELECT id_asociado FROM asociado WHERE portada=1";
+    $devueltas=mysqli_query($con,$queryfija) or die(mysqli_error($con));
+    
+    if(count($devueltas)!=0){
+        echo "<section class='publicaciones'>
+                    </div id='multi-item-example' class='carousel slide carousel-multi-item' data-ride='carousel'>
+                        <div class="carousel inner" role="listbox"> 
+                            <div class="carousel-item">
+                                <div class="row">
+                    
+            
+                    ";
+        while($publicacion=mysqli_fetch_array($devueltas)){
+            if(is_numeric($publicacion[0])){
+                $id=$publicacion[0];
+                $consulado="SELECT logo,paginaweb FROM asociado WHERE id_asociado='$id'";
+                $vepaella=mysqli_query($con,$consulado) or die(mysqli_error($con));
+                $filasz=mysqli_fetch_array($vepaella);
+                if(!empty($filasz[1])){
+                    if(detectarURL($filasz[1])){
+                        echo "
+                        <div class='col-md-4'>
+                            <a href='".$filasz[1]."' target='_blank'>
+                                <img alt='logo vinculo' src=".$filasz[0]." class='vinculorelacionado'/>
+                                </div>
+                               
+                            <a/>";
+                    }else{
+                        echo "<a href='verasociado.php?asociado=".$id."'>
+                            <img alt='logo vinculo' src=".$filasz[0]." class='vinculorelacionado'/>
+                            </div><a/>";
+                    }
+                }else{
+                    echo "<a href='verasociado.php?asociado=".$id."'><img alt='logo vinculo' src=".$filasz[0]." class='vinculorelacionado'/></div><a/>";
+                }
+            }else{
+                
+                echo "<div class='cajafija3'>".$publicacion[0]."</div>";
+            }
+                
+        
+        }
+                            echo "</section></div></div></div></div>";
+    }else{
+        
+    }
+
+?>
